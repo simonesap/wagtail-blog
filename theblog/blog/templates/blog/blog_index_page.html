@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+
+    <div class="container bg_beige d_flex align_center flex_column justify_center">
+
+        <h1 class="mt-200 mb-24">Shareblog</h1>
+        <!-- <div class="intro">{{ page.intro|richtext }}</div> -->
+        
+        {% for post in blogpages %}
+
+            <div class="d_flex align_center flex_column align_start mt-72 mb-32">
+                <h1>{{ post.author }}</h1>
+
+
+                <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+
+                {% with post=post.specific %}
+
+                    {% if post.specific.author %}
+                        <h2>Author: {{ post.specific.author }}</h2>
+                    {% endif %}
+                
+                {% endwith %}
+                
+                {% with post=post.specific %}
+
+                    {% with post.main_image as main_image %}
+                        <a href="{% pageurl post %}">{% if main_image %}{% image main_image fill-240x200 %}{% endif %}</a>
+                    {% endwith %}
+
+                {% endwith %}
+                <div class="">
+                    {{ post.specific.intro }}
+                </div>
+                
+                <p><a href="{% pageurl post %}">Read more</a></p>
+            </div>
+
+        {% endfor %}
+        </div>    
+
+{% endblock %}

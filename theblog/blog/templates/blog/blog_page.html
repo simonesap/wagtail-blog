@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+
+    <div class="d_flex align_center flex_column justify_center mb-32">
+        <h1 class="mt-200 mb-32">{{ page.title }}</h1>
+
+        {% for item in page.gallery_images.all %}
+            <div>
+                <div>
+                    {% image item.image fill-320x240 %}
+                </div>
+                <p>{{ item.caption }}</p>
+            </div>
+        {% endfor %}
+
+        <h2 class="m-16">Author: {{ page.author }}</h2>
+ 
+        <div class="intro m-16"><strong>{{ page.intro }}</strong></div>
+
+        <div class="container">
+            <p>
+                {{ page.body|richtext }}
+            </p>
+        </div>
+
+        <p class="meta m-16">{{ page.date }}</p>
+
+        <p class="m-32"><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+    </div>
+    
+
+{% endblock %}

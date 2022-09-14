@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags static %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+
+    <div class="d_flex flex_column justify_center align_center">
+        <h1 class="text_center mt-200"> Welcome to Shareblog </h1>
+
+        <div>
+            <h3 class="text_center mt-100">
+                {{ page.body|richtext }}
+            </h3>
+    
+            <p class="text_center mt-32"><a href="/blog/">Blog</a></p>
+        </div>
+
+        <div class="mt-72">
+            <h2>The moment to share yours ideas now!</h2>
+            <p class="text_center mt-32"><a href="/blog/">Add Post</a></p>
+        </div>
+        
+    </div>
+    
+{% endblock %}
