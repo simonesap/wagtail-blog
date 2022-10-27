@@ -81,6 +81,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "theblog.wsgi.application"
 
+ALLOWED_HOSTS = [
+  'localhost',
+  '127.0.0.1',
+  '::1',
+  'https://proxima-analytics.it']
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -167,3 +172,7 @@ WAGTAILSEARCH_BACKENDS = {
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com" 
 
+CORS_ALLOWED_ORIGINS = [
+   "http://localhost:3000",
+   "https://proxima-analytics.it"
+]
